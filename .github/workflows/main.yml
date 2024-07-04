@@ -13,8 +13,8 @@ jobs:
       - run: npm ci
     name: Building site and running pa11y-ci tests
     runs-on: ubuntu-latest
-
-# docs: https://accessibility.civicactions.com/posts/automated-accessibility-testing-leveraging-github-actions-and-pa11y-ci-with-axe
+  pa11y:
+    # docs: https://accessibility.civicactions.com/posts/automated-accessibility-testing-leveraging-github-actions-and-pa11y-ci-with-axe
     steps:
       - name: Checkout source.
         uses: actions/checkout@v2
