@@ -4,7 +4,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install modules
-        working-directory: ./accessible-workflow
+        working-directory: 
         run: npm install
   pa11y:
     runs-on: ubuntu-latest
