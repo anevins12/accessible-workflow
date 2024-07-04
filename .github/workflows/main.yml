@@ -4,6 +4,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install modules
+        working-directory: ./accessible-workflow
         run: ls
   pa11y:
     runs-on: ubuntu-latest
