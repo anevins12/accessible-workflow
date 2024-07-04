@@ -1,0 +1,8 @@
+{
+    "dependencies": {
+      "actions": "^1.3.0",
+      "browser-actions": "^0.2.8",
+      "pa11y-actions": "github:booleans-oss/pa11y-actions"
+    }
+  }
+  

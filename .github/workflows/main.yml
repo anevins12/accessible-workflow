@@ -1,0 +1,16 @@
+on: push
+jobs:
+  do_packages:
+    runs-on: ubuntu-latest
+    steps:
+      run: npm install
+  pa11y:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: browser-actions/setup-chrome@latest
+      - uses: booleans-oss/pa11y-actions.git@latest
+        with:
+          start: start
+          port: '3000'
+          
