@@ -4,7 +4,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install modules
-        run: npm install
+        run: |
+        ls -l
+        pwd
+        npm install
   pa11y:
     runs-on: ubuntu-latest
     needs: [packages]
