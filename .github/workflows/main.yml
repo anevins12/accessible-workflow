@@ -22,7 +22,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build]
     steps:
-      - uses: actions/checkout@v1
       - uses: browser-actions/setup-chrome@latest
       - uses: booleans-oss/pa11y-actions.git@latest
         with:
