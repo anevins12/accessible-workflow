@@ -11,13 +11,48 @@ jobs:
         with:
           node-version: 18
       - run: npm ci
-  pa11y:
+    name: Building site and running pa11y-ci tests
     runs-on: ubuntu-latest
-    needs: [build]
+
+# docs: https://accessibility.civicactions.com/posts/automated-accessibility-testing-leveraging-github-actions-and-pa11y-ci-with-axe
     steps:
-      - uses: browser-actions/setup-chrome@latest
-      - uses: booleans-oss/pa11y-actions@v1
+      - name: Checkout source.
+        uses: actions/checkout@v2
+
+      - name: Install jekyll site dependencies.
+        uses: ruby/setup-ruby@v1
         with:
-          start: start
-          port: '3000'
-          
+          ruby-version: 2.6
+          bundler-cache: true
+
+      - name: Install pa11y-ci dependencies.
+        run: npm install
+
+      - name: Start up jekyll server.
+        run: npm run start-detached
+
+      - name: Run pa11y-ci.
+        run: npm run pa11y-ci:sitemap 2>&1 | tee pa11y_output.txt
+        
+      - name: Read pa11y_output file.
+        id: pa11y_output
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: ./pa11y_output.txt
+        
+      - name: Comment on pull request.
+        uses: thollander/actions-comment-pull-request@master
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          message: '<details><summary>Pa11y testing results</summary>
+
+
+```${{ steps.pa11y_output.outputs.content }}```
+
+</details>'
+
+      - name: Check for pa11y failures.
+        if: contains(steps.pa11y_output.outputs.content, 'errno 2')
+        run: |
+          echo "::error::The site is failing accessibility tests. Please review the comment in the pull request or the pa11y-ci step in the workflow for details."
+          exit 1
