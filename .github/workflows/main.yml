@@ -16,7 +16,7 @@ jobs:
     needs: [build]
     steps:
       - uses: browser-actions/setup-chrome@latest
-      - uses: booleans-oss/pa11y-actions@latest
+      - uses: booleans-oss/pa11y-actions@v1
         with:
           start: start
           port: '3000'
