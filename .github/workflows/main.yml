@@ -5,8 +5,8 @@ jobs:
     steps:
       - name: Install modules
         working-directory: ../
-        run: ls
-        run: npm install
+        - run: ls
+        - run: npm install
   pa11y:
     runs-on: ubuntu-latest
     needs: [packages]
