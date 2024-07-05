@@ -25,9 +25,6 @@ jobs:
           ruby-version: 3.3
           bundler-cache: true
 
-      - name: Install jekyll
-        uses: ruby/
-
       - name: Install pa11y-ci dependencies.
         run: npm install
 
