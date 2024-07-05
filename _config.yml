@@ -1,0 +1,17 @@
+title: Accessibility workflow example
+
+plugins:
+  - jekyll-sitemap
+
+exclude:
+  - pa11y_output.txt
+  - lint
+  - .idea
+  - package.json
+  - package-lock.json
+  - .gitignore
+  - .github
+  - .pa11yci
+  - pa11y-reporter-junit.js
+  - pa11y-report-junit.xml
+  - .gitlab-ci.yml
