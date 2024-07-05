@@ -28,6 +28,9 @@ jobs:
       - name: Install pa11y-ci dependencies.
         run: npm install
 
+      - name: Jekyll Sitemap
+        uses: jekyll/jekyll-sitemap
+
       - name: Start up jekyll server.
         run: npm run start-detached
 
