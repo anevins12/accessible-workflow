@@ -24,7 +24,7 @@ jobs:
         with:
           ruby-version: 3.3
           bundler-cache: true
-
+ 
       - name: Install pa11y-ci dependencies.
         run: npm install
 
