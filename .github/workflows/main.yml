@@ -1,5 +1,5 @@
 
-
+ACTIONS_RUNNER_DEBUG: true 
 
 on: push
 jobs:
