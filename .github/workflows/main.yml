@@ -35,16 +35,11 @@ jobs:
         uses: juliangruber/read-file-action@v1
         with:
           path: ./pa11y_output.txt
-          
-      - name: Read test package.json file.
-        id: read_test
-        uses: juliangruber/read-file-action@v1
-        with:
-          path: ./package.json
 
       - name: Check for pa11y failures.
-        # if: contains(steps.pa11y_output.outputs.content, 'error')
+        if: contains(pa11y.steps.pa11y_output.outputs.content, 'error')
         run: |
-          echo "${{steps.pa11y_output.outputs.content}}"
-          echo "${{steps.read_test.outputs.content}}"
+          echo "::group::The site is failing accessibility tests."
+          echo "$(./pa11y_output.txt)"
+          echo "::endgroup::"
           exit 1
