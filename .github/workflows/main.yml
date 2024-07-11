@@ -8,7 +8,6 @@ jobs:
         with:
           node-version: 18
       - run: npm ci
-    name: Building site and running pa11y-ci tests
     # docs: https://accessibility.civicactions.com/posts/automated-accessibility-testing-leveraging-github-actions-and-pa11y-ci-with-axe
     steps:
       - name: Checkout source.
