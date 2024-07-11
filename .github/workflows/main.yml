@@ -9,8 +9,6 @@ jobs:
           node-version: 18
       - run: npm ci
     name: Building site and running pa11y-ci tests
-  pa11y:
-    runs-on: ubuntu-latest
     # docs: https://accessibility.civicactions.com/posts/automated-accessibility-testing-leveraging-github-actions-and-pa11y-ci-with-axe
     steps:
       - name: Checkout source.
@@ -37,7 +35,7 @@ jobs:
           path: ./pa11y_output.txt
 
       - name: Check for pa11y failures.
-        if: contains(pa11y.steps.pa11y_output.outputs.content, 'error')
+        if: contains(steps.pa11y_output.outputs.content, 'error')
         run: |
           echo "::group::The site is failing accessibility tests."
           echo "$(./pa11y_output.txt)"
