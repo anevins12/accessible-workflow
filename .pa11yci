@@ -2,6 +2,10 @@
   "defaults": {
     "concurrency": 4,
     "standard": "WCAG2AA",
-    "runners": ["axe"]
+    "runners": ["axe"],
+    "chromeLaunchConfig": {
+      "ignoreHTTPSErrors": true,
+      "args": ["--disable-dev-shm-usage", "--no-sandbox"]
+    }
   }
 }
