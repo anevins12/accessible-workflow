@@ -24,7 +24,7 @@ jobs:
       - name: Start up jekyll server and generate sitemap.
         run: |
           npm run start-detached
-          npm run pa11y-ci:sitemap 2>&1 | tee pa11y_output.txt
+          npm run pa11y-ci:sitemap http://127.0.0.1:4000 | tee pa11y_output.txt
         
       - name: Read pa11y_output file.
         id: pa11y_output
@@ -35,8 +35,6 @@ jobs:
       - name: Check for pa11y failures.
         if: contains(steps.pa11y_output.outputs.content, 'error')
         run: |
-          echo "ls"
-          echo "---------------"
           echo "::group::The site is failing accessibility tests."
           echo "$(./pa11y_output.txt)"
           echo "::endgroup::"
