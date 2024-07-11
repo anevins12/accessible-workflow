@@ -9,6 +9,7 @@ jobs:
           node-version: 18
       - run: npm ci
       # docs: https://accessibility.civicactions.com/posts/automated-accessibility-testing-leveraging-github-actions-and-pa11y-ci-with-axe
+      # This uses Pa11yCI to generate a text file that can then be output into the terminal.
       - name: Checkout source.
         uses: actions/checkout@v2
 
