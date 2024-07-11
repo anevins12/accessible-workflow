@@ -24,9 +24,7 @@ jobs:
       - name: Start up jekyll server and generate sitemap.
         run: |
           npm run start-detached
-          ls
-          echo '---------------'
-          npm run pa11y-ci:sitemap 2>&1 | tee pa11y_output.txt
+          npm run pa11y-ci:sitemap
         
       - name: Read pa11y_output file.
         id: pa11y_output
