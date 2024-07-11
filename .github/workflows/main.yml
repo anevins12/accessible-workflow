@@ -35,6 +35,8 @@ jobs:
       - name: Check for pa11y failures.
         if: contains(steps.pa11y_output.outputs.content, 'error')
         run: |
+          echo "ls"
+          echo "---------------"
           echo "::group::The site is failing accessibility tests."
           echo "$(./pa11y_output.txt)"
           echo "::endgroup::"
